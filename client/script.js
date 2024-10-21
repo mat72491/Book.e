@@ -3,6 +3,9 @@ const titleSection = document.querySelector(".title-container")
 const authorSection = document.querySelector(".author-container")
 const genreSection = document.querySelector(".genre-container")
 const descriptionSection = document.querySelector(".description-container")
+let condition = document.querySelector(".quality-container")
+
+const bookHeight = 239
 
 let books = []
 const getAllBooks = async () => {
@@ -39,6 +42,8 @@ function createThumbnails(books) {
         authorSection.innerHTML = ''
         genreSection.innerHTML = ''
         descriptionSection.innerHTML = ''
+        condition.innerHTML = ''
+        
 
         let titleElement = document.createElement("h1")
         titleElement.classList.add("bookTitle")
@@ -59,27 +64,30 @@ function createThumbnails(books) {
         descriptionElement.classList.add("description")
         descriptionElement.textContent = book.description
         descriptionSection.appendChild(descriptionElement)
+
+        let conditionElement = document.createElement("h5")
+        conditionElement.classList.add("condition")
+        conditionElement.textContent = `Condition: ${book.condition}`
+        condition.appendChild(conditionElement)
     }
 // Carousel scroll functionality
 let currentBookIndex = 0;
+let totalBooks = books.length
     const upBtn = document.querySelector('.up-btn');
     const downBtn = document.querySelector('.down-btn');
 
     if (upBtn && downBtn) {
         upBtn.addEventListener('click', () => {
-            if (currentBookIndex > 0) {
-                currentBookIndex--;
-                booksSection.style.transform = `translateY(-${currentBookIndex * 675}px)`; // Adjust scroll
-            }
+           currentBookIndex = (currentBookIndex === 0) ? books.length - 1 : currentBookIndex - 1  
+                booksSection.style.transform = `translateY(-${currentBookIndex * bookHeight * 3}px)`
+
         });
 
         downBtn.addEventListener('click', () => {
-            if (currentBookIndex < books.length - 1) {
-                currentBookIndex++;
-                booksSection.style.transform = `translateY(-${currentBookIndex * 675}px)`; // Adjust scroll
+            currentBookIndex = (currentBookIndex === books.length - 1) ? 0 :currentBookIndex + 1
+                booksSection.style.transform = `translateY(-${currentBookIndex * bookHeight *3}px)`
             }
-        });
-    }
+        )}
 
 
     async function main(){

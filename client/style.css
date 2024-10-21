@@ -46,18 +46,23 @@ li:hover {
 /*header*/
 
 .carousel{
-   width: 100vw;
-   height: 100vh;
-   position: relative;
+   width: 170px;
+   height: 715px;
+   position: absolute;
    display: flex;
    flex-direction:column;
    justify-content: center;
    align-items: center;
     overflow: hidden;
-    margin-top: 0%;
+    margin-top: 5%;
+    margin-left: 45%;
+    border: 3px solid rgb(103, 205, 213, .5);
+    border-radius: 20px;
+    border-width: 5px;
+
 }
 
-.carousel .book-container {
+.book-container {
         
         display:flex;
         flex-direction: column;
@@ -137,9 +142,9 @@ li:hover {
     background-color: rgba(200, 200, 200, 0.3);
     padding: 50px;
     gap: 20px;
-    width: 300px;
-    margin-top: 10%;
-    margin-right: 10%
+    width: 400px;
+    margin-top: 20%;
+    margin-right: 5%
 }
 .title-container{
     color: orange;
