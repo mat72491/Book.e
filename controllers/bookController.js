@@ -52,17 +52,6 @@ const getBookByGenre = async (req,res) => {
     }
 }
 
-const getClassics = async (req, res) => {
-    const {classics} = req.query
-        try{
-        const filter = classics === true ? { is_classic: true} : {is_classic: false}
-        const books = await Book.find(filter)
-        res.json(books)
-    }catch(e) {
-      return res.status(500).send(e.message)
-} 
-}
-
 const searchAuthorByName = async (req,res) => {
     const query = req.body.name
     console.log(query)
@@ -73,6 +62,18 @@ const searchAuthorByName = async (req,res) => {
         res.status(500).json({ error: 'Failed to search authors'})
     }
 }
+
+const searchPublisherByName = async (req, res) => {
+    const query = req.body.name
+    console.log(query)
+try {
+    const publishers = await Publisher.find({ name: { $regex: query, $options: 'i' } });
+    res.json(publishers);
+} catch (error) {
+    res.status(500).json({ error: 'Failed to search publishers' });
+}
+}
+
 
 const createBook = async (req, res) => {
     try {
@@ -186,7 +187,6 @@ module.exports = {
     getAllPublishers,
     getBookById,
     getBookByGenre,
-    getClassics,
     createBook,
     createAuthor,
     createPublisher,
@@ -196,6 +196,6 @@ module.exports = {
     deleteAuthor,
     deleteBook,
     deletePublisher,
-    searchAuthorByName
-
+    searchAuthorByName,
+    searchPublisherByName
 }
