@@ -41,10 +41,28 @@ function createThumbnails(books) {
         authorElement.textContent = book.author.name
         authorSection.appendChild(authorElement)
     }
-    
+// Carousel scroll functionality
+let currentBookIndex = 0;
+    const upBtn = document.querySelector('.up-btn');
+    const downBtn = document.querySelector('.down-btn');
+
+    if (upBtn && downBtn) {
+        upBtn.addEventListener('click', () => {
+            if (currentBookIndex > 0) {
+                currentBookIndex--;
+                booksSection.style.transform = `translateY(-${currentBookIndex * 675}px)`; // Adjust scroll
+            }
+        });
+
+        downBtn.addEventListener('click', () => {
+            if (currentBookIndex < books.length - 1) {
+                currentBookIndex++;
+                booksSection.style.transform = `translateY(-${currentBookIndex * 675}px)`; // Adjust scroll
+            }
+        });
+    }
 
 
-    
     async function main(){
     await getAllBooks()
     createThumbnails(books)
@@ -56,27 +74,4 @@ main()
 
 
 
-
-// const thumbnail = document.querySelector(".thumbnail")
-
-// const thumbnails = async () => {
-//     let response = await axios.get('http://localhost:3001/books')
-//     books = response.data
-//     console.log(books)
-// }
-
-// function createThumbnails(books) {
-//     books.forEach(book => {
-//         let div = booksSection.appendChild(document.createElement("div"))
-//         div.classList.add("thumbnailContainer")
-        
-//         let image = div.appendChild(document.createElement("img"))
-//         image.classList.add("thumbnail")
-//         image.src = book.image
-//     })
-// }async function main(){
-//     await createThumbnails()
-//     createCards(books)
-// }
-// main()
 
