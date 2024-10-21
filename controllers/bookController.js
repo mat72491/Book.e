@@ -4,7 +4,7 @@ const { Book, Author, Publisher } = require('../models');
 
 const getAllBooks = async (req, res) => {
     try {
-        const books = await Book.find()
+        const books = await Book.find().populate('author')
         res.json(books)
     } catch (error) {
         return res.status(500).send(error.message);
@@ -39,15 +39,6 @@ const getBookById = async (req, res) => {
         return res.status(500).send(e.message)
     }
 }
-
-const getBookByAuthorId = async (req, res) => {
-    try{
-        const books = await Book.findbyId(req.params.id).populate('author', 'name')
-            return res.json(books)
-        } catch (e) {
-            return res.status(500).send(e.message)
-    }
-    }
 
 const getBookByGenre = async (req,res) => {
     try{
@@ -183,7 +174,6 @@ module.exports = {
     getAllAuthors,
     getAllPublishers,
     getBookById,
-    getBookByAuthorId,
     getBookByGenre,
     getClassics,
     createBook,

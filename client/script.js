@@ -1,12 +1,18 @@
 const booksSection = document.querySelector(".book-container")
 const titleSection = document.querySelector(".title-container")
 const authorSection = document.querySelector(".author-container")
+const genreSection = document.querySelector(".genre-container")
+const descriptionSection = document.querySelector(".description-container")
 
 let books = []
 const getAllBooks = async () => {
     let response = await axios.get('http://localhost:3001/books')
     books = response.data
     console.log(books)
+
+    if (books.length > 0) {
+        displayEnlargedBook(books[0])
+    }
 }
 
 function createThumbnails(books) {
@@ -30,6 +36,9 @@ function createThumbnails(books) {
         console.log(book)
 
         titleSection.innerHTML = ''
+        authorSection.innerHTML = ''
+        genreSection.innerHTML = ''
+        descriptionSection.innerHTML = ''
 
         let titleElement = document.createElement("h1")
         titleElement.classList.add("bookTitle")
@@ -40,6 +49,16 @@ function createThumbnails(books) {
         authorElement.classList.add("author")
         authorElement.textContent = book.author.name
         authorSection.appendChild(authorElement)
+    
+        let genreElement = document.createElement("h3")
+        genreElement.classList.add("genre")
+        genreElement.textContent = book.genre
+        genreSection.appendChild(genreElement)
+
+        let descriptionElement = document.createElement("h4")
+        descriptionElement.classList.add("description")
+        descriptionElement.textContent = book.description
+        descriptionSection.appendChild(descriptionElement)
     }
 // Carousel scroll functionality
 let currentBookIndex = 0;

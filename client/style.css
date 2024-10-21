@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Lora', serif;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 /*header*/
@@ -129,8 +129,18 @@ li:hover {
 
 .info-container {
     display: flex;
-    flex-direction: row;
-    margin-left: 70%;
-    margin-top: 10%;
+    flex-direction: column;
+    justify-content: flex-start;
     position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(200, 200, 200, 0.3);
+    padding: 50px;
+    gap: 20px;
+    width: 300px;
+    margin-top: 10%;
+    margin-right: 10%
+}
+.title-container{
+    color: orange;
 }

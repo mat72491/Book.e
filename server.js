@@ -18,7 +18,6 @@ app.get('/authors', bookController.getAllAuthors)
 app.get('/publishers', bookController.getAllPublishers)
 
 app.get('/books/:id', bookController.getBookById)
-app.get('/books/authors/:id', bookController.getBookByAuthorId)
 app.get('/books/genre/:genre', bookController.getBookByGenre)
 app.get('/books/classics/:classics', bookController.getClassics)
 app.get('/books?classics=true', bookController.getClassics)
