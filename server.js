@@ -21,6 +21,7 @@ app.get('/books/:id', bookController.getBookById)
 app.get('/books/genre/:genre', bookController.getBookByGenre)
 app.get('/books/classics/:classics', bookController.getClassics)
 app.get('/books?classics=true', bookController.getClassics)
+app.get('/authors/search', bookController.searchAuthorByName)
 
 app.post("/books", bookController.createBook)
 app.post("/publishers", bookController.createPublisher)

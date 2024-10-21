@@ -5,7 +5,7 @@ const genreSection = document.querySelector(".genre-container")
 const descriptionSection = document.querySelector(".description-container")
 let condition = document.querySelector(".quality-container")
 
-const bookHeight = 239
+
 
 let books = []
 const getAllBooks = async () => {
@@ -71,21 +71,24 @@ function createThumbnails(books) {
         condition.appendChild(conditionElement)
     }
 // Carousel scroll functionality
-let currentBookIndex = 0;
+let currentIndex = 0;
+const bookHeight = 239
 let totalBooks = books.length
     const upBtn = document.querySelector('.up-btn');
     const downBtn = document.querySelector('.down-btn');
 
     if (upBtn && downBtn) {
         upBtn.addEventListener('click', () => {
-           currentBookIndex = (currentBookIndex === 0) ? books.length - 1 : currentBookIndex - 1  
-                booksSection.style.transform = `translateY(-${currentBookIndex * bookHeight * 3}px)`
+           currentIndex = (currentIndex <= 0) ? books.length : currentIndex - 3  
+           console.log('up',currentIndex)
+                booksSection.style.transform = `translateY(-${currentIndex * bookHeight}px)`
 
         });
 
         downBtn.addEventListener('click', () => {
-            currentBookIndex = (currentBookIndex === books.length - 1) ? 0 :currentBookIndex + 1
-                booksSection.style.transform = `translateY(-${currentBookIndex * bookHeight *3}px)`
+            currentIndex = (currentIndex >= books.length ) ? 0 :currentIndex + 3
+            console.log('down',currentIndex)
+                booksSection.style.transform = `translateY(-${currentIndex * bookHeight}px)`
             }
         )}
 

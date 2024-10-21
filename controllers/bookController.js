@@ -63,6 +63,17 @@ const getClassics = async (req, res) => {
 } 
 }
 
+const searchAuthorByName = async (req,res) => {
+    const query = req.body.name
+    console.log(query)
+    try {
+        const authors = await Author.find({ name: { $regex: query, $options: 'i'}})
+        res.json(authors)
+    }catch (e) {
+        res.status(500).json({ error: 'Failed to search authors'})
+    }
+}
+
 const createBook = async (req, res) => {
     try {
         const book = await new Book(req.body)
@@ -184,6 +195,7 @@ module.exports = {
     updateBook,
     deleteAuthor,
     deleteBook,
-    deletePublisher
+    deletePublisher,
+    searchAuthorByName
 
 }
