@@ -19,12 +19,13 @@ app.get('/publishers', bookController.getAllPublishers)
 
 app.get('/books/:id', bookController.getBookById)
 app.get('/books/genre/:genre', bookController.getBookByGenre)
-app.get('/authors/search', bookController.searchAuthorByName)
+app.get('/authors/search/:name', bookController.searchAuthorByName)
 app.get('/publishers/search', bookController.searchPublisherByName)
 
 app.post("/books", bookController.createBook)
 app.post("/publishers", bookController.createPublisher)
 app.post("/authors", bookController.createAuthor)
+app.post('/books/upload', bookController.uploadBook)
 
 app.put("/authors/:id", bookController.updateAuthor)
 app.put("/books/:id", bookController.updateBook)

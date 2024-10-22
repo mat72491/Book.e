@@ -15,7 +15,7 @@
     justify-content: space-around;
     width: 100%;
     border-bottom: 2px solid black;
-
+    text-decoration: none;
 }
 .header {
     z-index: 10;
@@ -31,6 +31,7 @@ ul {
     width: 100%;
     list-style-type: none;
     z-index: 1;
+    text-decoration: none;
 }
 
 li {
@@ -42,7 +43,10 @@ li:hover {
     color: white;
     cursor: pointer;
 }
-
+a {
+    text-decoration: none;
+    
+}
 /*header*/
 
 .carousel{
@@ -147,4 +151,11 @@ li:hover {
 }
 .title-container{
     color: orange;
+}
+
+#bookUploadForm {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 10px;
 }

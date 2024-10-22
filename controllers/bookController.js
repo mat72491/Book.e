@@ -181,6 +181,29 @@ const deleteAuthor = async (req, res) => {
     }
   };
 
+  let uploadBook = async (req, res) => {
+    try { 
+         const { title, author, genre, ISBN, publisher,year_published, image, condition, is_classic } = req.body
+     const isClassicBoolean = is_classic === 'true' ? true : false
+     const newBook = new Book({
+         title,
+         author,
+         genre,
+         ISBN,
+         publisher,
+         year_published,
+         image,
+         condition,
+         is_classic: isClassicBoolean
+     })
+     await newBook.save()
+     
+         res.status(201).send('Book uploaded successfully!')
+     } catch(e) {
+         res.status(500).json({ e: 'Failed to upload book', message: e.message })
+     }
+ }
+
 module.exports = {
     getAllBooks,
     getAllAuthors,
@@ -197,5 +220,6 @@ module.exports = {
     deleteBook,
     deletePublisher,
     searchAuthorByName,
-    searchPublisherByName
+    searchPublisherByName,
+    uploadBook
 }

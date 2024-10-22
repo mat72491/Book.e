@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./style.css">
     <script defer src="./addBooks.js"></script>
     <meta charset="UTF-8">
@@ -17,14 +24,45 @@
         <li>My Account</li>
     </ul>
 </div>
+
 <body>
-<form id=""addBookForm">
-    
+    <form id="bookUploadForm">
+        <label for="title">Title:</label>
+        <input type="text" id="book-title" placeholder="Enter book title">
+        
+        <label for="author">Author:</label>
+        <input for="author" id="author-search" placeholder="Search for an author" autocomplete="off"></label>
+        <datalist id="author-list"></datalist>
+        
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" placeholder="Enter genre">
+
+        <label for="ISBN">ISBN-13:</label>
+        <input type="text" id="isbn" placeholder="Enter ISBN-13">
+
+        <label for="publisher">Publisher:</label>
+        <input for="publisher" id="publisher-search" placeholder="Search for a publisher" autocomplete="off"></label>
+        <datalist id="publisher-list"></datalist>
+        
+        <label for="year_published">Publication Year:</label>
+        <input type="text" id="year-published" placeholder="Enter publication year">
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" placeholder="Enter description">
+
+        <label for="image">Image:</label>
+        <input type="text" id="image" placeholder="Enter image URL">
+
+        <label for="condition">Condition:</label>
+        <input type="text" id="condition" placeholder="Enter condition (Good/Fair/Poor)">
+
+        <label for="is_classic">Is this a classic?</label>
+        <input type="checkbox" id="isClassic" name="isClassic" value="true">
+
+        <button type="submit" class="submit">Submit</button>
+    </form>
 
 
-
-</form>
-
-    
 </body>
+
 </html>
