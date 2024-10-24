@@ -5,7 +5,8 @@ Ever go to the library, only to find that the book you want to read is out of st
 Have no fear, Book.e is here!  Book.e is a user-generated book database that allows users to rent and trade books with one another!  Users can upload their book collections into the Book.e database.  In return, they will have access to other people's book collections, the ability to request books, and the opportunity to fulfill other users' book requests.  
 
 MVP
-Book.e will run on mongoDB, express, and Javascript.  AAU, you can add, delete, and update book information on the front end.  Additionally, you can view all books uploaded to the database and fill out a request form to check out a book.
+Book.e will run on mongoDB, express, and Javascript.  AAU, you can 
+view books that are available on the site, with the author information, a brief description, and the condition.
 
 The four related data entities will be Publisher, Author, Genre, and Book.
 
@@ -46,6 +47,7 @@ AAU, you can leave comments and reviews of the books you've read.
 Carousel styling on the landing page.
 Individual user accounts.
 Stock counter.
+Add, delete, and update book information on the front end.  Additionally, you can view all books uploaded to the database and fill out a request form to check out a book.
 
 Icebox
 Direct messaging between users.
