@@ -1,6 +1,6 @@
 const booksSection = document.querySelector(".book-container")
 const titleSection = document.querySelector(".title-container")
-const authorSection = document.querySelector(".author-container")
+const authorSection = document.querySelector(".author-container-landing")
 const genreSection = document.querySelector(".genre-container")
 const descriptionSection = document.querySelector(".description-container")
 let condition = document.querySelector(".quality-container")
@@ -11,13 +11,13 @@ let books = []
 const getAllBooks = async () => {
     let response = await axios.get('http://localhost:3001/books')
     books = response.data
-    console.log(books)
 
     if (books.length > 0) {
         displayEnlargedBook(books[0])
     }
 }
 
+//carousel thumbnails//
 function createThumbnails(books) {
     books.forEach(book => {
         let div = booksSection.appendChild(document.createElement("div"))
@@ -33,6 +33,8 @@ function createThumbnails(books) {
 
     })
 }
+
+//display functionality
     function displayEnlargedBook(book) {
         const enlargedImage = document.querySelector('.enlarged-book-image');
         enlargedImage.src = book.image;
@@ -51,7 +53,7 @@ function createThumbnails(books) {
         titleSection.appendChild(titleElement)
 
         let authorElement = document.createElement("h2")
-        authorElement.classList.add("author")
+        authorElement.classList.add("author-landing")
         authorElement.textContent = book.author.name
         authorSection.appendChild(authorElement)
     
@@ -70,7 +72,7 @@ function createThumbnails(books) {
         conditionElement.textContent = `Condition: ${book.condition}`
         condition.appendChild(conditionElement)
     }
-// Carousel scroll functionality
+// Carousel scroll functionality (chatGPT)
 let currentIndex = 0;
 const bookHeight = 239
 let totalBooks = books.length
